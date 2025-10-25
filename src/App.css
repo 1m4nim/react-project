@@ -1,42 +1,196 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* --- ベーススタイル --- */
+body {
+  background-color: #f7f3e8;
+  color: #384f33; 
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #f7f3e8;
+  font-family: 'Inter', sans-serif;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: #2e7d32;
   text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(100, 100, 100, 0.2);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* フォーム */
+.todo-form-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #c8e6c9;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.todo-input:focus {
+  border-color: #66bb6a;
 }
 
-.card {
-  padding: 2em;
+.todo-add-button {
+  background-color: #81c784;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.todo-add-button:hover {
+  background-color: #66bb6a;
+}
+
+.todo-add-button:disabled {
+  background-color: #c8e6c9;
+  cursor: not-allowed;
+}
+
+/* タスクリスト */
+.todo-list-container,
+.trash-list-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(70, 70, 70, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.list-title {
+  font-size: 20px;
+  color: #38761d;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #a8c499;
+  padding-bottom: 8px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #fff9f0;
+  border-radius: 8px;
+  border: 1px solid #e0d9c9;
+  margin-bottom: 10px;
+}
+
+.todo-item.completed {
+  background-color: #f5f5f5;
+  opacity: 0.7;
+  border-left: 5px solid #a8794c;
+}
+
+.todo-text {
+  font-size: 16px;
+  color: #4a4a4a;
+  cursor: pointer;
+}
+
+/* 削除ボタン */
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.delete-button:hover {
+  transform: scale(1.2);
+}
+
+/* ゴミ箱リスト */
+.trash-container {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #ddd;
+}
+
+.trash-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fffaf5;
+  border: 1px solid #e3d9c5;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.trash-item:hover {
+  transform: scale(1.01);
+}
+
+.trash-text {
+  flex-grow: 1;
+  font-size: 16px;
+  color: #444;
+}
+
+.trash-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* ♻️ 復元ボタン */
+.restore-btn {
+  background-color: #a5d6a7;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2e7d32;
+  transition: background-color 0.2s;
+}
+
+.restore-btn:hover {
+  background-color: #81c784;
+}
+
+/* ❌ 完全削除ボタン */
+.delete-btn {
+  background-color: #ef9a9a;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #b71c1c;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #e57373;
 }

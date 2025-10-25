@@ -1,0 +1,39 @@
+import React from 'react';
+
+export interface Todo {
+  id: string; 
+  text: string;
+  completed: boolean;
+}
+
+interface TodoListProps {
+  todos?: Todo[]; 
+  toggleTodo: (id: string) => void;
+}
+
+const TodoList: React.FC<TodoListProps> = ({ todos, toggleTodo }) => {
+  // 防御的チェック: todosがundefinedまたはnullの場合、空の配列を使用
+  const safeTodos = todos || [];
+
+  return (
+    <div className="todo-list-container">
+      {safeTodos.length === 0 ? (
+        <p className="no-tasks-message">
+          🌳 すべてのタスクが完了しました！新しいタスクを追加しましょう。
+        </p>
+      ) : (
+        safeTodos.map((todo) => (
+          <div
+            key={todo.id}
+            className={`todo-item ${todo.completed ? "completed" : ""}`}
+            onClick={() => toggleTodo(todo.id)}
+          >
+            <span className="todo-text">{todo.text}</span>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default TodoList;
